@@ -4,12 +4,14 @@ import { AppContext, IAppContext } from '../../contexts/AppContext';
 // FIX: Import ProblemStatus to use enum values instead of strings for type safety.
 import { Problem, Reward, UserRole, ProblemStatus } from '../../types';
 import Card from '../../components/Card';
-import { PlusCircle, Gift, List, ArrowRight } from 'lucide-react';
+import { PlusCircle, Gift, List, ArrowRight, AlertTriangle, Bell } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
 import AILoadingIndicator from '../../components/AILoadingIndicator';
 import AIAnalysisResult from './shared/AIAnalysisResult';
 import MyReports from './shared/MyReports';
+import EmergencyInfo from '../../components/EmergencyInfo';
+import NotificationCenter from '../../components/NotificationCenter';
 
 interface CitizenDashboardProps {
   view: string;
@@ -203,6 +205,12 @@ const CitizenDashboard: React.FC<CitizenDashboardProps> = ({ view, setView }) =>
                         <button onClick={() => setView('rewards')} className="flex items-center text-lg font-semibold text-yellow-400 hover:text-yellow-300 transition-colors group">
                            Browse Rewards <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
                         </button>
+                        <button onClick={() => setView('emergency')} className="flex items-center text-lg font-semibold text-red-400 hover:text-red-300 transition-colors group">
+                           Report Emergency <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
+                        </button>
+                        <button onClick={() => setView('alerts')} className="flex items-center text-lg font-semibold text-blue-400 hover:text-blue-300 transition-colors group">
+                           Disaster Alerts <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
+                        </button>
                     </div>
                 </div>
             </Card>
@@ -210,6 +218,16 @@ const CitizenDashboard: React.FC<CitizenDashboardProps> = ({ view, setView }) =>
                 <List className="h-12 w-12 mb-2 text-green-400" />
                 <h4 className="text-2xl font-bold text-white">My Reports</h4>
                 <p className="text-gray-400">Track the status of your submissions.</p>
+            </Card>
+            <Card className="flex flex-col items-center justify-center text-center bg-red-500/10 border-red-500/30 hover:bg-red-500/20 transition-all cursor-pointer" onClick={() => setView('emergency')}>
+                <AlertTriangle className="h-12 w-12 mb-2 text-red-400" />
+                <h4 className="text-2xl font-bold text-white">Emergency</h4>
+                <p className="text-gray-400">Report urgent situations.</p>
+            </Card>
+            <Card className="flex flex-col items-center justify-center text-center bg-blue-500/10 border-blue-500/30 hover:bg-blue-500/20 transition-all cursor-pointer" onClick={() => setView('alerts')}>
+                <Bell className="h-12 w-12 mb-2 text-blue-400" />
+                <h4 className="text-2xl font-bold text-white">Alerts</h4>
+                <p className="text-gray-400">Disaster & emergency updates.</p>
             </Card>
         </div>
         <MyReports limit={3} />
@@ -225,6 +243,10 @@ const CitizenDashboard: React.FC<CitizenDashboardProps> = ({ view, setView }) =>
       return <MyReports />;
     case 'rewards':
         return <RewardsMarketplace />;
+    case 'emergency':
+        return <EmergencyInfo userId={localUser?.id || ''} />;
+    case 'alerts':
+        return <NotificationCenter userId={localUser?.id || ''} />;
     default:
       return <MainDashboard />;
   }

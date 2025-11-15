@@ -4,6 +4,7 @@ import Card from '../../components/Card';
 import { Problem } from '../../types';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import { Users, Flag, Bot, AlertCircle } from 'lucide-react';
+import AdminN8nJobs from '../../components/admin/AdminN8nJobs';
 
 const COLORS = ['#10B981', '#3B82F6', '#F59E0B', '#EF4444'];
 
@@ -96,6 +97,7 @@ const AdminDashboard: React.FC = () => {
                     </PieChart>
                 </ResponsiveContainer>
             </Card>
+            <AdminN8nJobs />
         </div>
     );
 };
