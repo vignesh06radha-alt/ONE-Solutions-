@@ -77,10 +77,19 @@ const App: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-black">
+      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-black via-gray-900 to-black">
         <div className="text-center">
-          <Bot className="mx-auto h-16 w-16 text-green-400 animate-pulse" />
-          <p className="mt-4 text-lg font-semibold text-gray-300">Initializing ONE Platform...</p>
+          <div className="relative">
+            <Bot className="mx-auto h-20 w-20 text-green-400 animate-pulse" />
+            <div className="absolute inset-0 mx-auto h-20 w-20 border-4 border-green-400/30 rounded-full animate-ping"></div>
+          </div>
+          <p className="mt-6 text-xl font-semibold text-gray-200">Initializing ONE Platform...</p>
+          <p className="mt-2 text-sm text-gray-400">Connecting to services...</p>
+          <div className="mt-6 flex justify-center space-x-2">
+            <div className="h-2 w-2 bg-green-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+            <div className="h-2 w-2 bg-green-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+            <div className="h-2 w-2 bg-green-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+          </div>
         </div>
       </div>
     );

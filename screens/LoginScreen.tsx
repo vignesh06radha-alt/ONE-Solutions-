@@ -13,14 +13,19 @@ const LoginScreen: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex flex-col items-center justify-center p-4">
       <div className="max-w-5xl w-full text-center">
         <div className="flex justify-center items-center gap-4 mb-6 animate-fade-in-down">
           <Logo userRole={null} className="h-16 w-16 text-green-400" />
-          <h1 className="text-5xl md:text-6xl font-bold text-white">Welcome to ONE</h1>
+          <h1 className="text-5xl md:text-6xl font-bold text-white bg-gradient-to-r from-green-400 to-green-300 bg-clip-text text-transparent">
+            Welcome to ONE
+          </h1>
         </div>
-        <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto animate-fade-in-up">
+        <p className="text-xl text-gray-400 mb-4 max-w-2xl mx-auto animate-fade-in-up">
           The AI-powered platform connecting communities to build a better, cleaner future, one report at a time.
+        </p>
+        <p className="text-sm text-gray-500 mb-12 max-w-2xl mx-auto">
+          Report problems • Earn credits • Redeem rewards • Make a difference
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -34,21 +39,24 @@ const LoginScreen: React.FC = () => {
             return (
               <div 
                 key={role} 
-                className="bg-[#111111] rounded-lg shadow-lg p-8 transform hover:scale-105 transition-transform duration-300 border border-gray-800 hover:border-green-500/50 hover:shadow-[0_0_25px_rgba(52,211,153,0.2)]"
+                className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl shadow-xl p-8 transform hover:scale-105 transition-all duration-300 border border-gray-700 hover:border-green-500/50 hover:shadow-[0_0_30px_rgba(52,211,153,0.3)] relative overflow-hidden"
                 style={{ animation: `fadeInUp 0.5s ease-out ${index * 0.15}s backwards` }}
               >
-                <div className="flex justify-center items-center h-16 w-16 rounded-full bg-green-500/10 mx-auto mb-4">
-                  <Icon className="h-8 w-8 text-green-400" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/5 rounded-full blur-3xl"></div>
+                <div className="relative">
+                  <div className="flex justify-center items-center h-16 w-16 rounded-full bg-gradient-to-br from-green-500/20 to-green-400/10 mx-auto mb-4 border border-green-500/30">
+                    <Icon className="h-8 w-8 text-green-400" />
+                  </div>
+                  <h2 className="text-2xl font-semibold text-white mb-2">I am a {role}</h2>
+                  <p className="text-gray-400 mb-6 min-h-[3rem]">{descriptions[role]}</p>
+                  <button
+                    onClick={() => handleLogin(role)}
+                    className="w-full bg-gradient-to-r from-green-500 to-green-400 text-black font-bold py-3 px-4 rounded-lg hover:from-green-400 hover:to-green-300 transition-all duration-200 flex items-center justify-center group shadow-lg hover:shadow-green-500/50"
+                  >
+                    Enter as {role}
+                    <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
+                  </button>
                 </div>
-                <h2 className="text-2xl font-semibold text-white mb-2">I am a {role}</h2>
-                <p className="text-gray-400 mb-6">{descriptions[role]}</p>
-                <button
-                  onClick={() => handleLogin(role)}
-                  className="w-full bg-green-500/90 text-black font-bold py-3 px-4 rounded-lg hover:bg-green-400 transition-colors flex items-center justify-center group"
-                >
-                  Enter as {role}
-                  <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
-                </button>
               </div>
             );
           })}

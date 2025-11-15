@@ -1,1 +1,182 @@
-{}
+[
+  {
+    "rewardId": "reward-transport-1",
+    "type": "transport",
+    "partnerId": "partner-bus-company",
+    "description": "Bus Ride Discount - 20% Off",
+    "creditsRequired": 50,
+    "partnersData": {
+      "partnerName": "City Bus Services",
+      "discount": "20%",
+      "validity": "30 days",
+      "terms": "Valid for next 10 bus rides"
+    },
+    "isActive": true,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "rewardId": "reward-transport-2",
+    "type": "transport",
+    "partnerId": "partner-bus-company",
+    "description": "Weekly Bus Pass - 50% Off",
+    "creditsRequired": 100,
+    "partnersData": {
+      "partnerName": "City Bus Services",
+      "discount": "50%",
+      "validity": "7 days",
+      "terms": "Unlimited travel for one week"
+    },
+    "isActive": true,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "rewardId": "reward-transport-3",
+    "type": "transport",
+    "partnerId": "partner-transit-authority",
+    "description": "Monthly Transport Pass",
+    "creditsRequired": 200,
+    "partnersData": {
+      "partnerName": "Metro Transit Authority",
+      "discount": "Full month pass",
+      "validity": "30 days",
+      "terms": "Unlimited travel on buses and trains"
+    },
+    "isActive": true,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "rewardId": "reward-transport-4",
+    "type": "transport",
+    "partnerId": "partner-railway",
+    "description": "Train Ticket - 15% Off",
+    "creditsRequired": 75,
+    "partnersData": {
+      "partnerName": "National Railway",
+      "discount": "15%",
+      "validity": "60 days",
+      "terms": "Discount on next train journey"
+    },
+    "isActive": true,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "rewardId": "reward-commodity-1",
+    "type": "commodity",
+    "partnerId": "partner-grocery-1",
+    "description": "Grocery Store - $10 Off",
+    "creditsRequired": 80,
+    "partnersData": {
+      "partnerName": "FreshMart Supermarket",
+      "discount": "$10",
+      "validity": "30 days",
+      "terms": "Minimum purchase $50"
+    },
+    "isActive": true,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "rewardId": "reward-commodity-2",
+    "type": "commodity",
+    "partnerId": "partner-grocery-2",
+    "description": "Supermarket - 10% Off",
+    "creditsRequired": 120,
+    "partnersData": {
+      "partnerName": "MegaStore",
+      "discount": "10%",
+      "validity": "30 days",
+      "terms": "Valid on all items"
+    },
+    "isActive": true,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "rewardId": "reward-commodity-3",
+    "type": "commodity",
+    "partnerId": "partner-essentials",
+    "description": "Household Essentials Pack",
+    "creditsRequired": 90,
+    "partnersData": {
+      "partnerName": "Home Essentials Store",
+      "discount": "Bundle discount",
+      "validity": "60 days",
+      "terms": "Cleaning supplies and toiletries"
+    },
+    "isActive": true,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "rewardId": "reward-commodity-4",
+    "type": "commodity",
+    "partnerId": "partner-market",
+    "description": "Local Market - $5 Off",
+    "creditsRequired": 40,
+    "partnersData": {
+      "partnerName": "Farmers Market",
+      "discount": "$5",
+      "validity": "14 days",
+      "terms": "Support local businesses"
+    },
+    "isActive": true,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "rewardId": "reward-partner-1",
+    "type": "partner",
+    "partnerId": "partner-cafe-1",
+    "description": "Local Cafe Voucher",
+    "creditsRequired": 60,
+    "partnersData": {
+      "partnerName": "Coffee Corner",
+      "discount": "$10 voucher",
+      "validity": "90 days",
+      "terms": "Valid at participating cafes"
+    },
+    "isActive": true,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "rewardId": "reward-partner-2",
+    "type": "partner",
+    "partnerId": "partner-gym",
+    "description": "City Gym Day Pass",
+    "creditsRequired": 70,
+    "partnersData": {
+      "partnerName": "City Recreation Center",
+      "discount": "Free day pass",
+      "validity": "30 days",
+      "terms": "Access to all facilities"
+    },
+    "isActive": true,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "rewardId": "reward-partner-3",
+    "type": "partner",
+    "partnerId": "partner-restaurant",
+    "description": "Restaurant - 15% Off",
+    "creditsRequired": 85,
+    "partnersData": {
+      "partnerName": "Local Eateries Network",
+      "discount": "15%",
+      "validity": "60 days",
+      "terms": "Dine-in or takeout"
+    },
+    "isActive": true,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "rewardId": "reward-partner-4",
+    "type": "partner",
+    "partnerId": "partner-cinema",
+    "description": "Movie Ticket Discount",
+    "creditsRequired": 95,
+    "partnersData": {
+      "partnerName": "Cinema Chain",
+      "discount": "Buy one get one free",
+      "validity": "90 days",
+      "terms": "Valid at partner cinemas"
+    },
+    "isActive": true,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  }
+]

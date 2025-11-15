@@ -1,6 +1,6 @@
 
-import { UserRole, Problem, ProblemStatus, User, Reward, Transaction } from '../types';
-import { MOCK_USERS, MOCK_PROBLEMS, MOCK_REWARDS, MOCK_CREDIT_PACKAGES, MOCK_BIDS, MOCK_AI_STATUS } from '../constants';
+import { UserRole, Problem, ProblemStatus, User, Reward, Transaction, Bid } from '../types';
+import { MOCK_USERS, MOCK_PROBLEMS, MOCK_REWARDS, MOCK_CREDIT_PACKAGES, getMockBids, MOCK_AI_STATUS } from '../constants';
 import { Briefcase, Heart, Train } from 'lucide-react';
 
 // Mock window.storage if it doesn't exist
@@ -38,7 +38,8 @@ export const initializeMockData = async () => {
       await window.storage.set(`problem:${problem.id}`, problem, true);
     }
     
-    for (const bid of MOCK_BIDS) {
+    const bids = getMockBids();
+    for (const bid of bids) {
         const problemBids = await window.storage.get(`bids:${bid.problemId}`) || [];
         await window.storage.set(`bids:${bid.problemId}`, [...problemBids, bid], true);
     }
@@ -52,7 +53,25 @@ export const initializeMockData = async () => {
         await window.storage.set(`transactions:${companyUser.id}`, mockTransactions, false);
     }
 
-    await window.storage.set('rewards:catalog', MOCK_REWARDS, true);
+    // Convert MOCK_REWARDS to backend format for compatibility
+    const backendFormatRewards = MOCK_REWARDS.map((reward, index) => ({
+        rewardId: reward.id,
+        type: index < 4 ? 'transport' : (index < 8 ? 'commodity' : 'partner'),
+        partnerId: `partner-${index + 1}`,
+        description: reward.description,
+        creditsRequired: reward.cost,
+        partnersData: {
+            partnerName: reward.title.includes('Bus') ? 'City Bus Services' : 
+                        reward.title.includes('Grocery') ? 'FreshMart Supermarket' :
+                        reward.title.includes('Cafe') ? 'Coffee Corner' : 'Partner Organization',
+            discount: reward.description.match(/\d+%|\$\d+/)?.[0] || 'Special offer',
+            validity: '30-90 days',
+        },
+        isActive: true,
+        createdAt: new Date().toISOString(),
+    }));
+    
+    await window.storage.set('rewards:catalog', [...MOCK_REWARDS, ...backendFormatRewards], true);
     await window.storage.set('ai:status', MOCK_AI_STATUS, true);
 
     await window.storage.set('app:initialized', true, true);
